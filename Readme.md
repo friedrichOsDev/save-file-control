@@ -11,4 +11,4 @@ This tool is designed to help you organize and back up your game save files. It 
  - seamless coop support
 
 ## Dependencies
- - Python >= 3.12.3
+ - Python 3.12.3 (Other versions may work but are not guaranteed)
