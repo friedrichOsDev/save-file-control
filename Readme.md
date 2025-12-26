@@ -10,5 +10,12 @@ This tool is designed to help you organize and back up your game save files. It 
  - load and unload save files _(for 10 and more saved games)_
  - seamless coop support
 
-## Dependencies
- - Python 3.12.3 (Other versions may work but are not guaranteed)
+## Supported Games
+ - Eldenring
+ - Dark Souls 1 - 3
+ - Dark Souls Remastered
+
+## Guides
+ - [Usage](./docs/Usage.md)
+ - [Building](./docs/Building.md)
+ - [Troubleshooting](./docs/Troubleshooting.md)
