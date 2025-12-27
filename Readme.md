@@ -11,9 +11,11 @@ This tool is designed to help you organize and back up your game save files. It 
  - seamless coop support
 
 ## Supported Games
- - Eldenring
- - Dark Souls 1 - 3
- - Dark Souls Remastered
+ - Eldenring **(currently not supported)**
+ - Dark Souls 1 - 3 **(currently not supported)**
+ - Dark Souls Remastered **(currently not supported)**
+
+> The development of support for these games is still in progress. If you want a specific game to be prioritized, please contact me (f39597054@gmail.com).
 
 ## Guides
  - **[Usage](./docs/Usage.md)**
