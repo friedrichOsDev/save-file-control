@@ -1,5 +1,6 @@
 import sys
-from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QSizePolicy
+from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QSizePolicy, QStackedWidget, QLabel
+from PySide6.QtCore import Qt
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -9,18 +10,47 @@ class MainWindow(QMainWindow):
         
         self.games = ["Eldenring", "Dark Souls 1", "Dark Souls 2", "Dark Souls 3", "Dark Souls Remastered"]
         
+        self.stack = QStackedWidget()
+        self.setCentralWidget(self.stack)
+        
         self.init_ui()
 
     def init_ui(self):
-        central_widget = QWidget()
-        self.setCentralWidget(central_widget)
-        layout = QVBoxLayout(central_widget)
+        self.menu_widget = QWidget()
+        layout = QVBoxLayout(self.menu_widget)
 
         for game in self.games:
             button = QPushButton(game)
             button.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
             button.setStyleSheet(self.get_button_style())
+            button.clicked.connect(lambda checked, g=game: self.show_game_view(g)) # checked is always False for QPushButton
             layout.addWidget(button)
+            
+        self.stack.addWidget(self.menu_widget)
+
+    def show_game_view(self, game_name):
+        game_widget = QWidget()
+        layout = QVBoxLayout(game_widget)
+        
+        label = QLabel(f"Menü für: {game_name}")
+        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        label.setStyleSheet(self.get_label_style())
+        layout.addWidget(label)
+        
+        back_btn = QPushButton("Zurück")
+        back_btn.setStyleSheet(self.get_button_style())
+        back_btn.clicked.connect(self.go_back)
+        layout.addWidget(back_btn)
+        
+        self.stack.addWidget(game_widget)
+        self.stack.setCurrentWidget(game_widget)
+
+    def go_back(self):
+        current_widget = self.stack.currentWidget()
+        self.stack.setCurrentIndex(0)
+        if current_widget != self.menu_widget:
+            self.stack.removeWidget(current_widget)
+            current_widget.deleteLater()
 
     def get_button_style(self):
         return """
@@ -40,6 +70,16 @@ class MainWindow(QMainWindow):
             QPushButton:pressed {
                 background-color: palette(dark);
                 color: palette(highlighted-text);
+            }
+        """
+    
+    def get_label_style(self):
+        return """
+            QLabel {
+                font-size: 24px;
+                font-weight: bold;
+                color: palette(window-text);
+                margin: 20px;
             }
         """
 
