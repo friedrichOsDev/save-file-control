@@ -1,2 +1,6 @@
 venv
 .vscode
+SaveFileControl.spec
+build
+dist
+cleanup.sh

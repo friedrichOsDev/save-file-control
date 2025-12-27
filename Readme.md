@@ -16,6 +16,6 @@ This tool is designed to help you organize and back up your game save files. It 
  - Dark Souls Remastered
 
 ## Guides
- - [Usage](./docs/Usage.md)
- - [Building](./docs/Building.md)
- - [Troubleshooting](./docs/Troubleshooting.md)
+ - **[Usage](./docs/Usage.md)**
+ - **[Building](./docs/Building.md)**
+ - **[Troubleshooting](./docs/Troubleshooting.md)**
