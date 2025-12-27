@@ -3,4 +3,3 @@ venv
 SaveFileControl.spec
 build
 dist
-cleanup.sh
