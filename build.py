@@ -21,4 +21,4 @@ if __name__ == "__main__":
     if os.path.exists("build"):
         os.system("rmdir /s /q build" if os.name == "nt" else "rm -rf build")
     if os.path.exists("SaveFileControl.spec"):  
-        os.system("rm -rf build SaveFileControl.spec")
+        os.remove("SaveFileControl.spec")
