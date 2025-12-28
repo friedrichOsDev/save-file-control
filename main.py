@@ -1,4 +1,4 @@
-import sys
+import sys, os, json
 from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QSizePolicy, QStackedWidget, QLabel
 from PySide6.QtCore import Qt
 
@@ -9,6 +9,7 @@ class MainWindow(QMainWindow):
         self.resize(600, 400)
         
         self.games = ["Eldenring", "Dark Souls 1", "Dark Souls 2", "Dark Souls 3", "Dark Souls Remastered"]
+        self.game_save_paths = self.get_game_save_paths()
         
         self.stack = QStackedWidget()
         self.setCentralWidget(self.stack)
@@ -82,6 +83,25 @@ class MainWindow(QMainWindow):
                 margin: 20px;
             }
         """
+        
+    def get_game_save_paths(self):
+        appdata_path = os.getenv("APPDATA") if os.name == "nt" else None
+        documents_path = os.path.join(os.getenv("USERPROFILE"), "Documents", "NBGI") if os.name == "nt" else None
+        return {
+            "win": {
+                "Eldenring": os.path.join(appdata_path, "EldenRing"),
+                "Dark Souls 1": os.path.join(documents_path, "DarkSouls"),
+                "Dark Souls 2": os.path.join(appdata_path, "DarkSoulsII"),
+                "Dark Souls 3": os.path.join(appdata_path, "DarkSoulsIII"),
+                "Dark Souls Remastered": os.path.join(documents_path, "DARK SOULS REMASTERED")
+            },
+            "linux": {
+                # linux paths can be added here
+            },
+            "mac": {
+                # mac paths can be added here
+            }
+        }
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
