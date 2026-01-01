@@ -85,23 +85,19 @@ class MainWindow(QMainWindow):
         """
         
     def get_game_save_paths(self):
-        appdata_path = os.getenv("APPDATA") if os.name == "nt" else None
-        documents_path = os.path.join(os.getenv("USERPROFILE"), "Documents", "NBGI") if os.name == "nt" else None
-        return {
-            "win": {
-                "Eldenring": os.path.join(appdata_path, "EldenRing"),
-                "Dark Souls 1": os.path.join(documents_path, "DarkSouls"),
-                "Dark Souls 2": os.path.join(appdata_path, "DarkSoulsII"),
-                "Dark Souls 3": os.path.join(appdata_path, "DarkSoulsIII"),
-                "Dark Souls Remastered": os.path.join(documents_path, "DARK SOULS REMASTERED")
-            },
-            "linux": {
-                # linux paths can be added here
-            },
-            "mac": {
-                # mac paths can be added here
-            }
-        }
+        """returns a dictionary with game names as keys and their save file paths as values for each supported OS"""
+        # Elden Ring
+        ## Windows
+        er_path_win = os.path.join(os.getenv('APPDATA'), 'EldenRing')
+        er_file_types = ['.sl2', '.co2']
+        
+        # Todo: Finish implementing this function for all games and OSes
+        return {}
+        
+    def scan_folders_for_saves(self, base_path:str, file_types:list[str]) -> list[tuple[str, str]]:
+        """returns a list of all files in base_path and its subfolders that match the given file types and their containing folder paths"""
+        # Todo: implement this function
+        pass
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
